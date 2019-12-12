@@ -2,6 +2,17 @@
 # sanitizeメソッド以外はとりあえず自分で書き出し。
 # 1...3は3未満まで、の意味。i < 3。untilでし。
 # 1..3は3までの意味。i < 4。byでし。
+# # 演算子と''を変数opに定義する
+# 1000から9999までイテレート（.upto() do |i|)
+# イテレートの回数をto_sしてあとで数字にできるようにしておく。
+# 演算子sをそれぞれイテレート(for i in 1...5)
+#iの数をreverseした数に加減乗除演算子を間に挟んだ形にする。
+#１つ以上演算子を入れたいので、4より大きいlengthを指定
+# 文字列valの中身を式として使えるeval(val)使う。
+# 0で割ると例外が起きるので、 ZeroDivisionErrorが起きた時はeという変数に格納しといてという指示
+# # 他に例外が起きたら全部eという変数に格納しといて、という指示
+
+
 
 def sanitize(val)
   nums = val.split(/[-\+*\/]/).collect{|n| n.to_i.to_s}
@@ -14,21 +25,12 @@ def sanitize(val)
   str
 end
 
-# 演算子と''を変数opに定義する
-# 1000から9999までイテレート
-# イテレートの回数をto_sしてあとで数字にできるようにしておく。
-# 演算子sをそれぞれイテレート
-#iの数をreverseした数に加減乗除演算子を間に挟んだ形にする。
-#１つ以上演算子を入れたいので、4より大きいlengthを指定
-# 文字列valの中身を式として使えるeval(val)使う。
-# 0で割ると例外が起きるので、 ZeroDivisionErrorが起きた時はeという変数に格納しといてという指示
-# # 他に例外が起きたら全部eという変数に格納しといて、という指示
+# ここから( ^ω^ )
 
-
-op = ['+', '-', '*', '/', ''] # op : operator
+op = ['+', '-', '*', '/', '']
 
 1000.upto(9999) do |i|
-  c = i.to_s # c : count
+  c = i.to_s
   for j in 0...op.length
     for k in 0...op.length
       for l in 0...op.length
@@ -37,7 +39,7 @@ op = ['+', '-', '*', '/', ''] # op : operator
         if val.length > 4
           begin
             if i == eval(val)
-              puts(val + '=' + i.to_s)
+              puts (val + '=' + i.to_s)
             end
           rescue ZeroDivisionError => e
           rescue => e
@@ -50,3 +52,9 @@ op = ['+', '-', '*', '/', ''] # op : operator
     end
   end
 end
+
+# 所感
+# 1000.upto(9999) do |i| が出てこなかった（for文ばっかり考えてた）
+# op[j]をなぜかop[3]とか描いてた（イテレーションの意味ないねん！）
+# eval(val)、覚えてたーヽ(*＾ω＾*)ﾉ
+# ZeroDivisionErrorの綴り間違えた(^_^;)
