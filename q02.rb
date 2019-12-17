@@ -35,11 +35,10 @@ op = ['+', '-', '*', '/', '']
       for l in 0...op.length
         val = c[3] + op[j] + c[2] + op[k] + c[1] + op[l] + c[0]
         val = sanitize(val)
-
         if val.length > 4
           begin
             if i == eval(val)
-              puts(val + '=' + i.to_s)
+              puts(val + '=' + c)
             end
           rescue ZeroDivisionError => e
           rescue => e
@@ -53,8 +52,7 @@ op = ['+', '-', '*', '/', '']
   end
 end
 
-
 # 所感
-# valをsanitizeするところまではすんなり書けた。
-# val.length > 4の設定がすっかり頭から抜けてた(^_^;)
-# 週明け（つまり２日空き）の割にはよく覚えてたと思う。
+# ほぼほぼすんなり書けたヽ(*＾ω＾*)ﾉ
+# 問題を解く時に、一番最初に作る部分はif i == eval(val)のところなんだろうな。
+# ８割以上OKだったので、次の問題に行くことにする。
