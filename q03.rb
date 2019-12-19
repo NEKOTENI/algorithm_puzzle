@@ -1,23 +1,31 @@
-# カードの初期化をする。
+# 定数Nにカードの枚数を代入する。
 N = 100
-cards = Array.new(N, false) # cardsの初期設定はfalse
+# cardsという変数に[ false, false, false, false ....] <= falseが100個並んだ配列ができる
+cards = Array.new(N, false)
 
-# 2〜Nまで裏返す
-(2..N).each{|i|
+# 2〜Nまで繰り返す
+(2..N).each do |i|
+# 2のカードから1枚おき、3のカードから2枚おき、なので、iから1を引いた繰り返しの数を設定する。
   j = i - 1
-  while (j < cards.size) do
-    cards[j] = !cards[j] # ここでcardsのbooleanをfalse => true もしくは true => false　にする。
+# jの繰り返しは、カードの枚数よりも少ない
+  while j < cards.size do
+# J枚めのcardsを裏返す = booleanをfalse => true もしくは true => false　にする。
+    cards[j] = !cards[j]
+# jの繰り返しにiを足して、次の繰り返しへ
     j += i
   end
+end
+
+# 上でできた配列に対してN定数回繰り返し
+N.times{|i|
+# cardsの要素がfalse = !cards[i]だったら、iに1を足した数をputs。1を足すのは、配列の添字が0から始まっているから。
+  puts i + 1 if !cards[i]
 }
 
-# 裏向きのカードを出力する
-N.times{|i|
-        puts i + 1 if !cards[i] # i+1しているのは、配列が0から始まっているから。
-}
+
 
 # 所感
-# day1
-# ArreyをAllayって間違えたｗ
-# Array.new(N, false）っていう書き方は知らなかった。
-# イテレーションの回数を入れておくiの設置の仕方がよくわかってない。調べておく。
+# day2
+# j =+ iをどうもj += 1にしがち・・・。iですよ。
+# 今日も正解を見て何してるのか考えて理解することをやった。
+# cards[i]がbooleanであることを覚えてないと!cards[i]で???になる(^◇^;)
