@@ -1,4 +1,4 @@
-# 定数Nにカードの枚数を代入する。
+# 定数Nにカードの枚数100を代入する。
 # cardsという変数に[ false, false, false, false ....] <= falseが100個並んだ配列ができる
 # 2〜Nまで繰り返す
 # 2のカードから1枚おき、3のカードから2枚おき、なので、iから1を引いた繰り返しの数を設定する。
@@ -11,22 +11,22 @@
 # ここから
 N = 100
 cards = Array.new(N, false)
- 
-(2..N).each{|i|
+
+(2..N).each do |i|
   j = i - 1
   while (j < cards.size) do
     cards[j] = !cards[j]
     j += i
   end
-}
+end
 
-N.times{|i|
+N.times do |i|
   puts i + 1 if !cards[i]
-}
+end
 
 
 # 所感
-# day3
-# またj =+ iをどうもj += 1にした(T . T)今度こそ！！
-# 前回書いたコードで何をしてるのかを見ながらコードを書くという逆算をした。だいたい合ってた。
-# .each do |i|を.each{|i|}で書くのに慣れ始めた。
+# day4
+# j =+ iをちゃんと書けたぜー！！
+# あ。。。.each do |i|を.each{|i|}で書くの忘れてた。
+# 答えを見ないで書けたヽ(*＾ω＾*)ﾉ 
